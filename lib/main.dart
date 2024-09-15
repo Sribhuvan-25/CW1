@@ -50,47 +50,48 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
       ),
-      body: Column(
-        children: [
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                const Text(
-                  'You have pushed the button this many times:',
-                ),
-                Text(
-                  '$_counter',
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  const Text(
+                    'You have pushed the button this many times:',
+                  ),
+                  Text(
+                    '$_counter',
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
+                ],
+              ),
             ),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              setState(() {
-                imageToggle = !imageToggle;
-              });
-            },
-            child: const Text("Image toggle"),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(
-                16.0), // Add padding around the reset button
-            child: ElevatedButton(
-              onPressed: _resetCounterAndImage,
-              child: const Text("Reset"),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  imageToggle = !imageToggle;
+                });
+              },
+              child: const Text("Image toggle"),
             ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(50),
-            width: 500,
-            height: 500,
-            child: Image.asset(
-              imageToggle ? 'lib/assets/i1.png' : 'lib/assets/i2.png',
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: ElevatedButton(
+                onPressed: _resetCounterAndImage,
+                child: const Text("Reset"),
+              ),
             ),
-          )
-        ],
+            Container(
+              margin: const EdgeInsets.all(50),
+              width: 500,
+              height: 500,
+              child: Image.asset(
+                imageToggle ? 'lib/assets/i1.png' : 'lib/assets/i2.png',
+              ),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
